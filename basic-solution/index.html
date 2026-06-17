@@ -9,15 +9,34 @@
 	<body>
 
 		<header>
-            <!-- DEMO #1: Add a primary heading and a secondary heading. -->
+			<h1>QUIZ TIME!</h1>
+            <h2 id="quiz-title"></h2>
 		</header>
 
 		<main>
-            <!-- DEMO #2: Add section with form, fieldset, legend for question text, and div for button group -->
+			<section>
+				<form>
+					<fieldset>
+						<legend id="question-area">
+							This is where the question text will go.
+						</legend>
+						<div class="answers">
+							<button type="button" class="choice-button">Option 1</button>
+							<button type="button" class="choice-button">Option 2</button>
+							<button type="button" class="choice-button">Option 3</button>
+							<button type="button" class="choice-button">Option 4</button>
+						</div>
+					</fieldset>
+				</form>
+			</section>
 
-            <!-- DEMO #3: Add section with paragraph for result after question is submitted -->
+			<section>
+				<p id="result-area"></p>
+			</section>
 
-            <!-- DEMO #4: Add section for next question button -->
+			<section class="actions">
+				<button type="button" id="next-question">Next Question</button>
+			</section>
 		</main>
 	</body>
 </html>
