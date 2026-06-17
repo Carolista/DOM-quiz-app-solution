@@ -1,0 +1,96 @@
+body {
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	background: linear-gradient(-60deg, #f7dca6, #f0b030);
+	color: #1f2a37;
+	margin: 0;
+	padding: 0;
+}
+
+header,
+main {
+    text-align: center;
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 1.5rem;
+}
+
+header h1, h2 {
+	margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-style: italic;
+}
+
+main {
+	background: #ffffff;
+	border: 1px solid #d9e2ec;
+	border-radius: 8px;
+}
+
+fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+#question-area {
+	font-size: 1.4rem;
+	margin-bottom: 1rem;
+}
+
+.answers {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.choice-button,
+#next-question,
+#play-again {
+    padding: 0.65rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.choice-button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3rem;
+    background: #abd4f6;
+    border: 1px solid #c5dff9; 
+}
+
+.choice-button:hover {
+    background: #71b3ed;
+}
+
+#next-question,
+#play-again {
+    background: #f4dba9;
+    border: 1px solid #f8edd6; 
+}
+
+#next-question:hover,
+#play-again:hover {
+    background: #f6cf80;
+}
+
+#result-area {
+	min-height: 1.5rem;
+    font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.correct {
+	color: #1b7f3b;
+}
+
+.incorrect {
+	color: #b42318;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+	margin-top: 1rem;
+}

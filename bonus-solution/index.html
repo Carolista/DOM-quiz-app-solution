@@ -4,38 +4,39 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Quiz Time!</title>
-		<link href="styles.css" type="text/css" rel="stylesheet"  />
+		<link href="styles.css" type="text/css" rel="stylesheet" />
 		<script src="script.js" type="module" defer></script>
 	</head>
 	<body>
 		<header>
 			<h1>QUIZ TIME!</h1>
+            <h2 id="quiz-title"></h2>
 		</header>
 
 		<main>
 			<section>
-				<h2 id="quiz-title">Quick Check</h2>
 				<form>
 					<fieldset>
-						<legend id="question">
+						<legend id="question-area">
 							This is where the question text will go.
 						</legend>
 						<div class="answers">
-							<button type="button" class="choice-buttons">Option 1</button>
-							<button type="button" class="choice-buttons">Option 2</button>
-							<button type="button" class="choice-buttons">Option 3</button>
-							<button type="button" class="choice-buttons">Option 4</button>
+							<button type="button" class="choice-button">Option 1</button>
+							<button type="button" class="choice-button">Option 2</button>
+							<button type="button" class="choice-button">Option 3</button>
+							<button type="button" class="choice-button">Option 4</button>
 						</div>
 					</fieldset>
 				</form>
 			</section>
 
 			<section>
-				<p id="result"></p>
+				<p id="result-area"></p>
 			</section>
 
 			<section class="actions">
 				<button type="button" id="next-question">Next Question</button>
+				<button type="button" id="play-again">Play Again</button>
 			</section>
 		</main>
 	</body>
