@@ -49,6 +49,7 @@ function renderQuestion() {
 
 function handleOptionClick(event) {
 	const selectedButton = event.target;
+    const currentQuestion = questionList[currentQuestionIndex];
 	const isCorrect = selectedButton.textContent === currentQuestion.options[currentQuestion.correctIndex];
 	resultArea.textContent = isCorrect
 		? 'Correct answer! Great job.'

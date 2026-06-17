@@ -62,6 +62,7 @@ function renderQuestion() {
 
 function handleOptionClick(event) {
 	const selectedButton = event.target;
+    const currentQuestion = questionList[currentQuestionIndex];
     // BONUS #3F: Update isCorrect below to check against currentCorrectAnswer
 	const isCorrect = selectedButton.textContent === currentQuestion.options[currentQuestion.correctIndex];
     // BONUS #2B: Add 1 to score if correct
