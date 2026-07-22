@@ -37,12 +37,12 @@ playAgainButton.addEventListener('click', runQuiz);
 /** TASK FUNCTIONS **/
 
 function renderQuestion() {
-    // Prep data
+	// Prep data
 	const currentQuestion = shuffledQuestionList[currentQuestionIndex];
 	const shuffledChoices = shuffle(currentQuestion.options);
 	currentCorrectAnswer = currentQuestion.options[currentQuestion.correctIndex];
 
-    // Render data on page and update styling as needed
+	// Render data on page and update styling as needed
 	questionArea.textContent = currentQuestion.question;
 	choiceButtons.forEach((button, i) => {
 		button.textContent = shuffledChoices[i];
@@ -51,9 +51,8 @@ function renderQuestion() {
 	});
 	resultArea.textContent = '';
 	resultArea.classList.remove('correct', 'incorrect');
-    resultArea.style.display = 'none';
+	resultArea.style.display = 'none';
 	nextQuestionButton.style.display = 'none';
-	playAgainButton.style.display = 'none';
 }
 
 function handleOptionClick(event) {
@@ -69,12 +68,11 @@ function handleOptionClick(event) {
 	resultArea.classList.add(isCorrect ? 'correct' : 'incorrect');
 
 	choiceButtons.forEach(button => (button.disabled = true));
-    resultArea.style.display = 'block';
+	resultArea.style.display = 'block';
 	nextQuestionButton.style.display = 'block';
 }
 
-function handleNextQuestionClick(event) {
-	// event.preventDefault();
+function handleNextQuestionClick() {
 	currentQuestionIndex++;
 	if (currentQuestionIndex === questionList.length) {
 		questionArea.textContent = 'Quiz Completed';
@@ -91,12 +89,10 @@ function handleNextQuestionClick(event) {
 }
 
 function runQuiz() {
+	playAgainButton.style.display = 'none';
 	shuffledQuestionList = shuffle(questionList);
 	currentQuestionIndex = 0;
 	score = 0;
-	choiceButtons.forEach(button => {
-		button.style.display = 'block';
-	});
 	renderQuestion();
 }
 

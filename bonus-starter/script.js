@@ -57,7 +57,6 @@ function renderQuestion() {
     // BONUS #1C: Clear classes from resultArea
     resultArea.style.display = 'none';
 	nextQuestionButton.style.display = 'none';
-    // BONUS #5D: Hide play again button
 }
 
 function handleOptionClick(event) {
@@ -76,7 +75,6 @@ function handleOptionClick(event) {
 }
 
 function handleNextQuestionClick(event) {
-	event.preventDefault();
 	currentQuestionIndex++;
 	if (currentQuestionIndex === questionList.length) {
 		questionArea.textContent = 'Quiz Completed';
@@ -93,9 +91,8 @@ function handleNextQuestionClick(event) {
 	}
 }
 
-// BONUS #5F: Create function that shuffles question list, resets current 
-// question index to 0, resets score to 0,resets choice buttons display to 'block', 
-// and renders the first question
+// BONUS #5F: Create a function that hides the Play Again button, shuffles question list, 
+// resets current question index to 0, resets score to 0, renders the first question
 
 /** HELPER FUNCTIONS **/
 

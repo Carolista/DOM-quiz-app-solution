@@ -59,8 +59,7 @@ function handleOptionClick(event) {
 	nextQuestionButton.style.display = 'block';
 }
 
-function handleNextQuestionClick(event) {
-	event.preventDefault();
+function handleNextQuestionClick() {
 	currentQuestionIndex++;
 	if (currentQuestionIndex === questionList.length) {
 		questionArea.textContent = 'Quiz Completed';
