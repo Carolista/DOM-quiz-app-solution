@@ -37,13 +37,14 @@ fieldset {
 	margin: 0;
 }
 
-#question-area {
+#question-display {
 	font-size: 1.4rem;
 	margin-bottom: 1rem;
 }
 
 .answers {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.5rem;
 }
 
@@ -78,12 +79,11 @@ fieldset {
 	background: #f6cf80;
 }
 
-#result-area {
+#result-display {
 	min-height: 1.5rem;
 	font-size: 1.2rem;
 	font-weight: bold;
 }
-
 
 body.correct {
 	background: linear-gradient(-60deg, #90ba9d, #1b7f3b);
@@ -93,11 +93,11 @@ body.incorrect {
 	background: linear-gradient(-60deg, #c7acaa, #b42318);
 }
 
-body.correct #result-area {
+body.correct #result-display {
 	color: #1b7f3b;
 }
 
-body.incorrect #result-area {
+body.incorrect #result-display {
 	color: #b42318;
 }
 

@@ -8,9 +8,9 @@ const { quizTitle, questionList } = quizData;
 /** CREATE OBJECTS REPRESENTING HTML ELEMENTS **/
 
 const quizTitleHeading = document.getElementById('quiz-title');
-const questionArea = document.getElementById('question-area');
+const questionDisplay = document.getElementById('question-display');
 const choiceButtons = document.querySelectorAll('.choice-button');
-const resultArea = document.getElementById('result-area');
+const resultDisplay = document.getElementById('result-display');
 const nextQuestionButton = document.getElementById('next-question');
 
 /** DECLARE GLOBAL VARIABLES NEEDED **/
@@ -32,38 +32,40 @@ nextQuestionButton.addEventListener('click', handleNextQuestionClick);
 /** TASK FUNCTIONS **/
 
 function renderQuestion() {
-    // Prep data
+	// Prep data
 	const currentQuestion = questionList[currentQuestionIndex];
-    
-    // Render data on page and update styling as needed
-	questionArea.textContent = currentQuestion.question;
+
+	// Render data on page and update styling as needed
+	questionDisplay.textContent = currentQuestion.question;
 	choiceButtons.forEach((button, i) => {
 		button.textContent = currentQuestion.options[i];
 		button.disabled = false;
 		button.style.display = 'block';
 	});
-	resultArea.textContent = '';
-    resultArea.style.display = 'none';
+	resultDisplay.textContent = '';
+	resultDisplay.style.display = 'none';
 	nextQuestionButton.style.display = 'none';
 }
 
 function handleOptionClick(event) {
 	const selectedButton = event.target;
-    const currentQuestion = questionList[currentQuestionIndex];
-	const isCorrect = selectedButton.textContent === currentQuestion.options[currentQuestion.correctIndex];
-	resultArea.textContent = isCorrect
+	const currentQuestion = questionList[currentQuestionIndex];
+	const isCorrect =
+		selectedButton.textContent ===
+		currentQuestion.options[currentQuestion.correctIndex];
+	resultDisplay.textContent = isCorrect
 		? 'Correct answer! Great job.'
 		: 'Sorry, that is not correct.';
 	choiceButtons.forEach(button => (button.disabled = true));
-    resultArea.style.display = 'block';
+	resultDisplay.style.display = 'block';
 	nextQuestionButton.style.display = 'block';
 }
 
 function handleNextQuestionClick() {
 	currentQuestionIndex++;
 	if (currentQuestionIndex === questionList.length) {
-		questionArea.textContent = 'Quiz Completed';
-		resultArea.textContent = `Thank you for playing!`;
+		questionDisplay.textContent = 'Quiz Completed';
+		resultDisplay.textContent = `Thank you for playing!`;
 		choiceButtons.forEach(button => {
 			button.style.display = 'none';
 		});

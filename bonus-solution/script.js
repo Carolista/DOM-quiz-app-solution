@@ -8,9 +8,9 @@ const { quizTitle, questionList } = quizData;
 /** CREATE OBJECTS REPRESENTING HTML ELEMENTS **/
 
 const quizTitleHeading = document.getElementById('quiz-title');
-const questionArea = document.getElementById('question-area');
+const questionDisplay = document.getElementById('question-display');
 const choiceButtons = document.querySelectorAll('.choice-button');
-const resultArea = document.getElementById('result-area');
+const resultDisplay = document.getElementById('result-display');
 const nextQuestionButton = document.getElementById('next-question');
 const playAgainButton = document.getElementById('play-again');
 
@@ -18,7 +18,6 @@ const playAgainButton = document.getElementById('play-again');
 
 let shuffledQuestionList = [];
 let currentQuestionIndex = 0;
-let currentCorrectAnswer = '';
 let score = 0;
 
 /** RENDER PAGE AND START QUIZ APP **/
@@ -40,42 +39,44 @@ function renderQuestion() {
 	// Prep data
 	const currentQuestion = shuffledQuestionList[currentQuestionIndex];
 	const shuffledChoices = shuffle(currentQuestion.options);
-	currentCorrectAnswer = currentQuestion.options[currentQuestion.correctIndex];
 
 	// Render question data on page and reset result area
-	questionArea.textContent = currentQuestion.question;
+	questionDisplay.textContent = currentQuestion.question;
 	choiceButtons.forEach((button, i) => {
 		button.textContent = shuffledChoices[i];
 		button.disabled = false;
 		button.style.display = 'block';
 	});
-	resultArea.textContent = '';
-	resultArea.style.display = 'none';
+	resultDisplay.textContent = '';
+	resultDisplay.style.display = 'none';
 	nextQuestionButton.style.display = 'none';
 }
 
 function handleOptionClick(event) {
 	const selectedButton = event.target;
-	const isCorrect = selectedButton.textContent === currentCorrectAnswer;
+	const currentQuestion = shuffledQuestionList[currentQuestionIndex];
+	const isCorrect =
+		selectedButton.textContent ===
+		currentQuestion.options[currentQuestion.correctIndex];
 	if (isCorrect) {
 		score++;
 	}
-	resultArea.textContent = isCorrect
+	resultDisplay.textContent = isCorrect
 		? 'Correct answer! Great job.'
 		: 'Sorry, that is not correct.';
-    document.body.classList.remove('correct', 'incorrect');
-    document.body.classList.add(isCorrect ? 'correct' : 'incorrect');
+	document.body.classList.remove('correct', 'incorrect');
+	document.body.classList.add(isCorrect ? 'correct' : 'incorrect');
 	choiceButtons.forEach(button => (button.disabled = true));
-	resultArea.style.display = 'block';
+	resultDisplay.style.display = 'block';
 	nextQuestionButton.style.display = 'block';
 }
 
 function handleNextQuestionClick() {
 	currentQuestionIndex++;
-    document.body.classList.remove('correct', 'incorrect');
+	document.body.classList.remove('correct', 'incorrect');
 	if (currentQuestionIndex === questionList.length) {
-		questionArea.textContent = 'Quiz Completed';
-		resultArea.textContent = `Thank you for playing! Your final score: ${score}/${questionList.length}.`;
+		questionDisplay.textContent = 'Quiz Completed';
+		resultDisplay.textContent = `Thank you for playing! Your final score: ${score}/${questionList.length}.`;
 		choiceButtons.forEach(button => {
 			button.style.display = 'none';
 		});
