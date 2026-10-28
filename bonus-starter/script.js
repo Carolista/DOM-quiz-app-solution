@@ -45,7 +45,7 @@ function renderQuestion() {
 	// BONUS #3B: Create shuffledChoices array by shuffling options
     // BONUS #3E: Update value of currentCorrectAnswer as string for future comparison
 	currentCorrectAnswer = currentQuestion.options[currentQuestion.correctIndex];
-    // Render data on page and update styling as needed
+    // Render question data on page and reset result area
 	questionArea.textContent = currentQuestion.question;
 	choiceButtons.forEach((button, i) => {
         // BONUS #3C: Replace currentQuestion.options with shuffledChoices
@@ -54,7 +54,6 @@ function renderQuestion() {
 		button.style.display = 'block';
 	});
 	resultArea.textContent = '';
-    // BONUS #1C: Clear classes from resultArea
     resultArea.style.display = 'none';
 	nextQuestionButton.style.display = 'none';
 }
@@ -68,7 +67,7 @@ function handleOptionClick(event) {
 	resultArea.textContent = isCorrect
 		? 'Correct answer! Great job.'
 		: 'Sorry, that is not correct.';
-    // BONUS #1B: Clear classes from resultArea then add one based on isCorrect
+    // BONUS #1B: Swap out correct/incorrect class on body
 	choiceButtons.forEach(button => (button.disabled = true));
     resultArea.style.display = 'block';
 	nextQuestionButton.style.display = 'block';
@@ -76,9 +75,9 @@ function handleOptionClick(event) {
 
 function handleNextQuestionClick(event) {
 	currentQuestionIndex++;
+    // BONUS #1D: Clear correct/incorrect classes from body
 	if (currentQuestionIndex === questionList.length) {
 		questionArea.textContent = 'Quiz Completed';
-        // BONUS #1D: Clear classes from resultArea
         // BONUS #2C: Add score to final statement
 		resultArea.textContent = `Thank you for playing!`;
 		choiceButtons.forEach(button => {

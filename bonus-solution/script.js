@@ -42,7 +42,7 @@ function renderQuestion() {
 	const shuffledChoices = shuffle(currentQuestion.options);
 	currentCorrectAnswer = currentQuestion.options[currentQuestion.correctIndex];
 
-	// Render data on page and update styling as needed
+	// Render question data on page and reset result area
 	questionArea.textContent = currentQuestion.question;
 	choiceButtons.forEach((button, i) => {
 		button.textContent = shuffledChoices[i];
@@ -50,7 +50,6 @@ function renderQuestion() {
 		button.style.display = 'block';
 	});
 	resultArea.textContent = '';
-	resultArea.classList.remove('correct', 'incorrect');
 	resultArea.style.display = 'none';
 	nextQuestionButton.style.display = 'none';
 }
@@ -64,9 +63,8 @@ function handleOptionClick(event) {
 	resultArea.textContent = isCorrect
 		? 'Correct answer! Great job.'
 		: 'Sorry, that is not correct.';
-	resultArea.classList.remove('correct', 'incorrect');
-	resultArea.classList.add(isCorrect ? 'correct' : 'incorrect');
-
+    document.body.classList.remove('correct', 'incorrect');
+    document.body.classList.add(isCorrect ? 'correct' : 'incorrect');
 	choiceButtons.forEach(button => (button.disabled = true));
 	resultArea.style.display = 'block';
 	nextQuestionButton.style.display = 'block';
@@ -74,9 +72,9 @@ function handleOptionClick(event) {
 
 function handleNextQuestionClick() {
 	currentQuestionIndex++;
+    document.body.classList.remove('correct', 'incorrect');
 	if (currentQuestionIndex === questionList.length) {
 		questionArea.textContent = 'Quiz Completed';
-		resultArea.classList.remove('correct', 'incorrect');
 		resultArea.textContent = `Thank you for playing! Your final score: ${score}/${questionList.length}.`;
 		choiceButtons.forEach(button => {
 			button.style.display = 'none';
