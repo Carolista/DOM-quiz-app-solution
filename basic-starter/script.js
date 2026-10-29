@@ -10,7 +10,7 @@
 
 /** DECLARE GLOBAL VARIABLES NEEDED **/
 
-// DEMO #7: Add variables for tracking the current question index and current correct answer
+// DEMO #7: Add a variable for tracking the current question index
 
 /** RENDER PAGE AND START QUIZ APP **/
 
